@@ -101,3 +101,4 @@ let result6 = g_after_f_v2(f: incrementByOne, g: incrementByOne)(10) // result 1
 /// Unicode circle.
 ///
 
+/// # 1.2 Properties of Composition
