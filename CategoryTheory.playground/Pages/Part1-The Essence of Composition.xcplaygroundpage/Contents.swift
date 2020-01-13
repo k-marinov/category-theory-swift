@@ -102,3 +102,38 @@ let result6 = g_after_f_v2(f: incrementByOne, g: incrementByOne)(10) // result 1
 ///
 
 /// # 1.2 Properties of Composition
+
+/// There are two extremely important properties that the composition in any category must satisfy
+///
+/// 1. Composition is associative. If you have three morphisms f,g, and h, that can be composed, you
+/// you don't need parentheses to compose them. In math notation this is expressed as:
+/// ℎ ∘ (𝑔 ∘ 𝑓 ) = (ℎ ∘ 𝑔) ∘ 𝑓 = ℎ ∘ 𝑔 ∘ 𝑓
+///
+/// In (pseudo) Haskell:
+///
+/// f :: A -> B
+/// g :: B -> C
+/// h :: C -> D
+/// h. (g . f) == (h . g) == h . g . f
+
+/// 2. For every object A there is an arrow which is a unit of composition. This arrow loops from the object
+/// to itself. Being a unit of composition means that, when composed with any arrow that either starts at A or
+/// ends at A, respectively, it gives back the same arrow. The unit arrow for object A is called id𝐴
+/// (identity on A). In math notation if 𝑓 goes from A to B then
+///
+/// 𝑓 ∘ id𝐴 = 𝑓
+///
+/// and
+///
+/// id𝐵 ∘ 𝑓 = 𝑓
+
+
+/// When dealing with functions, the identity arrow is implemented as the identity
+/// function that just returns back its argument. The implementation is same for every type. Which means this
+/// function is universally polymorphic.
+
+func id<A>(x: A) -> A {
+    return x
+}
+
+
