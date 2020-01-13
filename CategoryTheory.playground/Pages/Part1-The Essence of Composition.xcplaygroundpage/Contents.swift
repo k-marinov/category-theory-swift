@@ -126,14 +126,13 @@ let result6 = g_after_f_v2(f: incrementByOne, g: incrementByOne)(10) // result 1
 /// and
 ///
 /// id𝐵 ∘ 𝑓 = 𝑓
-
+///
+///Every object has an identity arrow that serves as a unit under composition.
 
 /// When dealing with functions, the identity arrow is implemented as the identity
 /// function that just returns back its argument. The implementation is same for every type. Which means this
 /// function is universally polymorphic.
 
-func id<A>(x: A) -> A {
+func id<T>(x: T) -> T {
     return x
 }
-
-
