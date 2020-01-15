@@ -77,7 +77,7 @@ func g_after_f_v1<A,B,C>(a: A, f: @escaping (A) -> B, g: @escaping (B) -> C) -> 
 }
 
 /// In the v2 version input a is provided by currying
-func g_after_f_v2<A,B,C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> ((A) -> C) {
+func g_after_f_v2<A,B,C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C {
     return { a in
         let b = f(a)
         let c = g(b)
@@ -127,12 +127,38 @@ let result6 = g_after_f_v2(f: incrementByOne, g: incrementByOne)(10) // result 1
 ///
 /// id𝐵 ∘ 𝑓 = 𝑓
 ///
-///Every object has an identity arrow that serves as a unit under composition.
+/// Every object has an identity arrow that serves as a unit under composition.
 
 /// When dealing with functions, the identity arrow is implemented as the identity
 /// function that just returns back its argument. The implementation is same for every type. Which means this
 /// function is universally polymorphic.
 
-func id<T>(x: T) -> T {
+/// Given a set S, the identity function on S is the function idS:S→S that maps any element x of S to itself:
+func id<S>(x: S) -> S {
     return x
 }
+
+/// # 1.3 Composition is the Essence of Programming
+/// Functional programmers have a peculiar way of approaching problems.
+/// We decompose bigger problems into smaller problems.
+/// If the smaller problems are still too big, we decompose them further,
+/// and so on. Finally, we write code that solves all the small problems.
+/// And then comes the essence of programming: we compose those pieces
+/// of code to create solutions to larger problems.
+///
+///
+/// https://elbauldelprogramador.com/en/scala-category-theory-composition/
+/// https://en.wikibooks.org/wiki/Haskell/Category_theory
+/// https://blog.karumi.com/monad/
+/// http://homepages.inf.ed.ac.uk/jcheney/presentations/ct4d1.pdf
+/// http://danshiebler.com/2018-11-10-category-solutions/
+/// https://en.wikiversity.org/wiki/Introduction_to_Category_Theory/Sets_and_Functions
+/// https://ncatlab.org/nlab/show/identity+function
+
+func compose<A,B,C>(left f: @escaping (A) -> B, right g: @escaping (B) -> C) -> (A) -> C {
+    return { g(f($0)) }
+}
+
+let transformer = { (value: Int) in return value + 1 }
+
+compose(left: id,  right: transformer)(10) == compose(left: transformer, right: id)(10) // true
