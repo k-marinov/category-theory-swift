@@ -27,6 +27,8 @@ import Foundation
 ///
 /// Sets can be finite or infinite. The type of String, which is a synonym for a list of Char, is an example of
 /// infinite set.
+
+/// 2.3 What Are Types?
 ///
 /// When we declare x to be an Integer:
 /// x :: Integer
@@ -47,5 +49,11 @@ import Foundation
 
 /// That's why computer scientists came up with a brilliant idea, or a major hack, depending on your point of
 /// view, to extend every type by one more special value called the bottom and denoted by Unicode ⊥. This
-/// value corresponds to a non-terminating computation. 
+/// value corresponds to a non-terminating computation.
+
+/// f :: Bool -> Bool
+/// f x = undefined
+
+/// Functions that may return bottom are called partial, as oppose to total functions, which return valid
+/// results for every possible argument.
 
