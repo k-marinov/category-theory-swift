@@ -102,7 +102,7 @@ let result6 = g_after_f_v2(f: incrementByOne, g: incrementByOne)(10) // result 1
 ///
 
 /// # 1.2 Properties of Composition
-
+///
 /// There are two extremely important properties that the composition in any category must satisfy
 ///
 /// 1. Composition is associative. If you have three morphisms f,g, and h, that can be composed, you
@@ -139,6 +139,7 @@ func id<S>(x: S) -> S {
 }
 
 /// # 1.3 Composition is the Essence of Programming
+///
 /// Functional programmers have a peculiar way of approaching problems.
 /// We decompose bigger problems into smaller problems.
 /// If the smaller problems are still too big, we decompose them further,

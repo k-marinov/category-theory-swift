@@ -2,6 +2,6 @@
 <playground version='6.0' target-platform='ios'>
     <pages>
         <page name='Part1-The Essence of Composition'/>
-        <page name='Page2'/>
+        <page name='Part2-Types and Functions'/>
     </pages>
 </playground>
